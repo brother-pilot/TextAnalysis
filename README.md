@@ -9,3 +9,5 @@
 Составление N-граммной модели текста по списку предложений (файл FrequencyAnalysisTask.cs)
 
 Генерация текста по N-граммной модели (файл TextGeneratorTask.cs)
+
+Solving practical task from site 
