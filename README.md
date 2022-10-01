@@ -10,4 +10,4 @@
 
 Генерация текста по N-граммной модели (файл TextGeneratorTask.cs)
 
-Solving practical task from site 
+Solving practical task from site https://courses.openedu.ru subject
