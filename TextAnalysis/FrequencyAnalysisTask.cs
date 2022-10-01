@@ -28,19 +28,15 @@ namespace TextAnalysis
         public static Dictionary<string, string> GetMostFrequentNextWords(List<List<string>> text)
         {
             var result = new Dictionary<string, string>(16384);
-            //List<List<string>> grammCount = new List<List<string>>(65536);
             List<string> grammCount = new List<string>(65536);
             var resultCount = new Dictionary<string, string>(16384);
             List<string> biGramm = new List<string>(16384);
-            //List<List<string>> biGramm = new List<List<string>>(65536);
             //работаем с биграммами
             FindAnyGramm(text, biGramm,2);
             CountGramm(biGramm, grammCount);
             CompareGramm(result, resultCount, grammCount, 2);
             //работаем с триграммами
             List<string> triGramm = new List<string>(16384);
-            //if (biGramm.Count>400)
-                //Console.WriteLine();
             grammCount = new List<string>(65536);
             FindAnyGramm(text, triGramm, 3);
             CountGramm(triGramm, grammCount);
@@ -55,8 +51,6 @@ namespace TextAnalysis
             for (var i = 0; i < grammCount.Count; i = l)
             {
                 string[] words = grammCount[i].Split();
-                //if (i>12754 && typeGramm == 2) 
-                //    Console.WriteLine();
                 string secondWord;
                 string firstWord;
                 if (words.Length == 3 && typeGramm == 2)
@@ -150,15 +144,11 @@ namespace TextAnalysis
                     else break;
                 }
                 grammCount.Add(count + " " + gramm[k]);
-                //    var bbb = biGramm[k].Split();
-                //grammCount.Add();
-                //count.ToString() (count.ToString()+" "+ biGramm[k]).Split()
             }
             return grammCount;
         }
         
         public static List<string> FindAnyGramm(List<List<string>> text, List<string> gramm, int typeGramm)
-        //public static List<List<string>> FindAnyGramm(List<List<string>> text, List<List<string>> gramm, int typeGramm)
         {
             //ищем все возможные в тексте граммы 
             for (var i = 0; i < text.Count; i++)
@@ -168,20 +158,16 @@ namespace TextAnalysis
                     {
                         //добавляем биграммы 
                         gramm.Add(text[i][j] + " " + text[i][j + 1]);
-                        //gramm.Add(new List<string> { text[i][j], text[i][j + 1]});
                     }
                 if (typeGramm == 3)
                     for (var j = 0; j < text[i].Count - 2; j++)
                     {
                         //добавляем триграммы
                         gramm.Add(text[i][j] + " " + text[i][j + 1] + " " + text[i][j + 2]);
-                        //gramm.Add(new List<string> { text[i][j], text[i][j + 1], text[i][j + 2]});
                     }
             }
-            //сортируем элементы //при реализации через лист здесь не сортирует. нужно делать это сложнее. потом вернуться
+            //сортируем элементы 
             gramm.Sort();
-            //if (gramm.Count>400)
-            //Console.WriteLine();
             return gramm;
         }
     }

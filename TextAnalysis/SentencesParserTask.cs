@@ -47,8 +47,7 @@ namespace TextAnalysis
             for (int j = 0; j < text.Length; j++)
             {
                 //сначала разбиваем на предложения с использованием этих символов разделителей
-                // if (text[j] != '.' && text[j] != '!' && text[j] != '?' && text[j] != ';' && text[j] != ':' && text[j] != '(' && text[j] != ')')
-                if (!".!?;:()".Contains(text[j].ToString()))
+                 if (!".!?;:()".Contains(text[j].ToString()))
                 {
                     //если этот символ буква или апостроф то записываем иначе ставим пробел
                     if (char.IsLetter(text[j]) || text[j] == '\'') builder.Append(text[j]);
